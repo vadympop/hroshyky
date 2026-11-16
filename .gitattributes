@@ -1,0 +1,2 @@
+# One line-ending style on every platform, so generated files and hooks behave the same.
+* text=auto eol=lf
