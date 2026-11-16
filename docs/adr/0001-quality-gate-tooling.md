@@ -19,7 +19,7 @@ Each gate is one `make` target. CI jobs and git hooks call the same targets, so 
 | Coverage | `coverage` | `diff-cover --fail-under=85` against the PR base, and `scripts/coverage_ratchet.sh`, which runs the base commit's tests in a git worktree and fails if the total went down |
 | Migrations | `migrate-check` | Alembic upgrade → downgrade to base → upgrade on an empty PostgreSQL, then `alembic check`. **Added in the next checkpoint 1 PR, together with the database** |
 | API contract | `contract` | regenerate `backend/openapi.json`, fail on `git diff` |
-| Secrets | `secrets` | gitleaks: whole history in CI, staged changes in the pre-commit hook |
+| Secrets | `secrets` | gitleaks: the full history of the commit under test in CI (not other branches, so one bad branch cannot fail every PR), staged changes in the pre-commit hook |
 | Dependencies | `deps` | `uv lock --check` and `uv audit` |
 
 CI is one workflow. Backend gates run only when backend paths change. Secrets and contract always run. The `ci-ok` job fails unless every other job passed or was skipped by the path filter, so it is the single check to mark as required.

@@ -41,8 +41,8 @@ openapi: ## regenerate the committed OpenAPI schema
 contract: openapi ## gate: the committed schema matches the code
 	git diff --exit-code -- backend/openapi.json
 
-secrets: ## gate: scan the whole history (needs gitleaks on PATH; the hook scans staged changes)
-	gitleaks git --redact --verbose .
+secrets: ## gate: scan the history of the current commit (needs gitleaks on PATH; the hook scans staged changes)
+	gitleaks git --redact --verbose --log-opts=HEAD .
 
 deps: deps-lock deps-audit ## gate: lock file in sync, no known vulnerabilities
 deps-lock: ; $(B) uv lock --check
