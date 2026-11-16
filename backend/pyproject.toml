@@ -63,4 +63,5 @@ dev = [
     "pytest-cov>=7.1.0",
     "pytest-socket>=0.8.1",
     "ruff>=0.17.5",
+    "urllib3==1.26.4",
 ]
