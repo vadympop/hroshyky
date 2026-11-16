@@ -8,6 +8,7 @@ Roadmap and process: `docs/ROADMAP.md`. Current stage spec: `docs/stages/STAGE-N
 - `docs/` holds the roadmap, stage specs, architecture, ADRs and the backlog. Repo-wide config (`docker-compose.yml`, `.github/`, this file) lives at the root.
 - CI runs only the checks relevant to the paths a PR touches, plus repo-wide checks (secrets, contract).
 - An application directory may have its own `CLAUDE.md` for app-specific commands and gotchas. This root file always applies.
+- Backend commands and gotchas: `backend/CLAUDE.md`. Every quality gate is a `make` target in the root `Makefile` (`make check` runs all of them). CI and the git hooks call the same targets.
 
 ## How to work
 - Plan first (plan mode), wait for the human's approval, then write code.
