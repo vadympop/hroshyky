@@ -20,6 +20,12 @@ async def health() -> Health:
     return Health()
 
 
+@router.get("/demo", summary="Endpoint missing from the committed schema")
+async def demo() -> Health:
+    """Added without regenerating openapi.json."""
+    return Health()
+
+
 def create_app() -> FastAPI:
     """Build the application. It reads no settings, so the schema export needs no environment."""
     app = FastAPI(title="Hroshyky API", version="0.1.0")
